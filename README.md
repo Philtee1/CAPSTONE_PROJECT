@@ -1,4 +1,5 @@
-# WEATHER API ETL PIPELINE
+# Building an Efficient ETL Pipeline with Weather map API
+
 
 ##  Project Overview
 This project demonstrates a data pipeline that extracts weather data from an API, transforms it, and loads it into an S3 bucket using Apache Airflow. The pipeline ensures the API's availability before extracting the data, transforms the data into a structured format, and stores it in a CSV file on AWS S3.
