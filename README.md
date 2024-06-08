@@ -16,8 +16,7 @@ This project demonstrates a data pipeline that extracts weather data from an API
 ## Project Scope and Objectives
 
 ### Scope
-The scope of this project is to develop an ETL (Extract, Transform, Load) pipeline that automates the process of fetching weather data, processing it, and storing it in a cloud storage service.
-
+The scope of this project is to develop an ETL (Extract, Transform, Load) pipeline that automates the process of fetching, processing, and storing weather data in cloud storage.
 ### Objectives
 - Verify the availability of the weather API.
 - Extract weather data for a specific location.
@@ -77,9 +76,14 @@ docker-compose up -d
 ### DAG Definition
 The DAG consists of three primary tasks:
 
-1. *weather_api_readiness*: This task uses an HttpSensor to confirm the weather API is healthy before proceeding.
-2. *extract_weather_data*: This task retrieves weather data for Portland using a SimpleHttpOperator. The response is converted to JSON format.
-3. *transform_load_weather_data*: This PythonOperator transforms the extracted data (converts Kelvin to Fahrenheit, formats timestamps, etc.) and loads it into a CSV file within an S3 bucket.
+1. weather_api_readiness:
+Uses an HttpSensor to confirm the weather API is available before proceeding.
+
+2. extract_weather_data:
+Retrieves weather data for Portland using a SimpleHttpOperator. The response is converted to JSON format.
+
+3. transform_load_weather_data:
+Uses a PythonOperator to transform the extracted data (e.g., converts Kelvin to Fahrenheit, formats timestamps) and loads it into a CSV file in an S3 bucket.
 
 ## Usage
 - Start the pipeline by accessing the Airflow UI and triggering the DAG.
